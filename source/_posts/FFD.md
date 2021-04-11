@@ -13,7 +13,7 @@ This is a assignments 1 from course Animation Simulation University of Leeds
 ## Repo is [here](https://github.com/flwmxd/Simulations)
 
 
-{% note-success %}
+{% note %}
 
 * 1. A GUI to load, display, and write-out 2D triangular meshes. You can define your own file format. (6g) 
 
