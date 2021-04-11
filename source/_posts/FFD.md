@@ -11,7 +11,7 @@ This is an OpenGL Simulation Application, which written by c++.
 This is a assignments 1 from course Animation Simulation University of Leeds
 
 
-{% note %}
+
 * 1. A GUI to load, display, and write-out 2D triangular meshes. You can define your own file format. (6g) 
 
 * 2. A 2D free-form deformation tool using a grid-based cage. The user should be able to use the mouse to move any vertex of the cage and deform a given 2D triangular mesh. The weights of a mesh vertex with respect to its associated cage vertices should be computed by bilinear interpolation. (6g) 
@@ -22,7 +22,7 @@ This is a assignments 1 from course Animation Simulation University of Leeds
 
 * 5. A 3D free-form deformation tool using a grid-based cage to deform a 3D mesh, similar to 2 in 2D, except that the weights of a mesh vertex with respect to its associated cage vertices should be computed by trilinear interpolation. (5g) 
 
-{% endnote %}
+
 
 # Features
 
