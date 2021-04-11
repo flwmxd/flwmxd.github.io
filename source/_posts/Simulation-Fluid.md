@@ -13,7 +13,7 @@ They are assignments 4 from course Animation Simulation University of Leeds
 
 
 # Project Descripton 
-{% note-success %}
+
 You will build a fluid simulator based on Smoothed 
 Particle Hydrodynamics (SPH). It should come with a GUI where you can specify the initial state of the water and the environment. It should be able to enable/disable different forces. 
 
@@ -36,7 +36,7 @@ Hint 2: the rendering can be performed via one of the following approaches:
 * using textures to fill each grid cell with transparencies controlled by the local particle density, or 
 * marching cubes to draw the free surfaces 
 Hint 3: the details are in the slides as well as **https://matthias-research.github.io/pages/publications/sca03.pdf**
-{% endnote %}
+
 
 # Particle Hydrodynamics
 
