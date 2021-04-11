@@ -4,17 +4,14 @@ date: 2021-04-10 09:32:19
 tags: Simulation
 index_img: /images/ffd.png
 ---
+## Repo is [here](https://github.com/flwmxd/Simulations)
 
 This is an OpenGL Simulation Application, which written by c++.
 
 This is a assignments 1 from course Animation Simulation University of Leeds
 
 
-## Repo is [here](https://github.com/flwmxd/Simulations)
-
-
 {% note %}
-
 * 1. A GUI to load, display, and write-out 2D triangular meshes. You can define your own file format. (6g) 
 
 * 2. A 2D free-form deformation tool using a grid-based cage. The user should be able to use the mouse to move any vertex of the cage and deform a given 2D triangular mesh. The weights of a mesh vertex with respect to its associated cage vertices should be computed by bilinear interpolation. (6g) 
