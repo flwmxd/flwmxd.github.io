@@ -16,7 +16,7 @@ They are assignments 3 from course Animation Simulation University of Leeds
 ## Repo is [here](https://github.com/flwmxd/Simulations)
 
 
-{% note-success %}
+
 You will build a cloth simulation system to show different fabric behaviours. It should come with a GUI where you can load/write cloth mesh files (OBJ 
 files). It should also be able to detect and resolve simple cloth-object collisions. 
 
@@ -57,7 +57,7 @@ Hint 4: The collision between the ball and the cloth should not be sticky. It ca
 
 Hint 5: Wind blowing can be modelled as a steady force in a fixed direction. Hint 6: At each cloth vertex, the friction force between the sphere and the cloth is always in the opposite direction of their relative motions. The plane the friction force lies in is orthogonal to the surface normal of the sphere at that cloth vertex
 
-{% endnote %}
+
 
 # 1. Spring-Mass System
 
