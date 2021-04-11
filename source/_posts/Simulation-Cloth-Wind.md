@@ -16,7 +16,7 @@ They are assignments 3 from course Animation Simulation University of Leeds
 ## Repo is [here](https://github.com/flwmxd/Simulations)
 
 
-{% note success %}
+{% note-success %}
 You will build a cloth simulation system to show different fabric behaviours. It should come with a GUI where you can load/write cloth mesh files (OBJ 
 files). It should also be able to detect and resolve simple cloth-object collisions. 
 
