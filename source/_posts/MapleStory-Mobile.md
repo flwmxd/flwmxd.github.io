@@ -11,7 +11,7 @@ The MapleStory Open-Source Implementation, which support for android、ios、win
 
 this project has been completed 80% above. in order to avoid private server. I did not open source it.
 
-### But here is another opensource project [MapleStory-Editor](https://github.com/flwmxd/PharaohStroy)
+### But here is another opensource project (69 stars and 15 forks) [MapleStory-Editor](https://github.com/flwmxd/PharaohStroy)
 
 ![the mobile edition](/images/maple-android.jpg)
 
