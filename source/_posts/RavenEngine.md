@@ -19,7 +19,7 @@ Raven Engine is High Performance Graphics group project which is primarily an ea
 
 1. Viewer and Editor Applications
 2. Scripted interaction and behavior (Lua)
-3. SkinnedMesh 
+3. SkinnedMesh and Animation
 4. Render based on OpenGL
 5. Event System
 6. I/O
