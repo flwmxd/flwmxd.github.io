@@ -13,7 +13,7 @@ Raven Engine is High Performance Graphics group project which is primarily an ea
 
 ### Repo is [here](https://gitlab.com/SC17BH/hpg_group_project)
 
-![](/images/Raven.png)
+![](/images/raven.gif)
 
 # Current Features
 
@@ -27,6 +27,7 @@ Raven Engine is High Performance Graphics group project which is primarily an ea
 8. Architecture based on ECS
 9. GUI
 10. Physics
+11. Advanced Lighting
 
 ### Other Modules Document
 
