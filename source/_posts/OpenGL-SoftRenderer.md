@@ -16,6 +16,6 @@ This is an OpenGL software-renderer, which written by c++.
 ### 5. Phong Shading
 
 
-![the mobile edition](/images/Texture.png)
+![OpenGL](/images/Texture.png)
 
-![the mobile edition](/images/Color.png)
+![Fake OpenGL](/images/Color.png)
