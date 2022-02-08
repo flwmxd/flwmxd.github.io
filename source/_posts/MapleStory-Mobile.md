@@ -3,7 +3,7 @@ title: MapleStory-Mobile
 date: 2021-04-9 05:41:35
 tags: Game Engine
 sticky: 100
-index_img: /images/map.png
+index_img: /images/maple-android.jpg
 ---
 
 
@@ -11,14 +11,15 @@ The MapleStory Open-Source Implementation, which support for android、ios、win
 
 this project has been completed 80% above. in order to avoid private server. I did not open source it.
 
-### But here is another opensource project (69 stars and 15 forks) [MapleStory-Editor](https://github.com/flwmxd/PharaohStroy)
+### But here is another opensource project (95 stars and 15 forks) [MapleStory-Editor](https://github.com/flwmxd/PharaohStroy)
 
 ![the mobile edition](/images/maple-android.jpg)
 
 ### Video Here
 
-{% youtube 1M5iNam1l7w %}
-
+<p align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1M5iNam1l7w"  frameborder="0" allowfullscreen></iframe>
+</p>
 
 # Engine Function
 ### Program language
