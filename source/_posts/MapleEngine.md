@@ -20,8 +20,8 @@ Maple-Engine is my own engine for leaning mordern engine and rendering technique
 ### Atmospheric Scattering
 ![](/images/Atmosphere.png)
 
-### RSM
-![](/images/RSM.png)
+### Light Propagation Volumes
+![](/images/LPV.png)
 
 ## Current Features
 
