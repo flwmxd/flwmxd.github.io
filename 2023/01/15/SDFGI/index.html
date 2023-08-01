@@ -1,0 +1,587 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="Prime`s Portfolio">
+  <meta name="author" content="Prime">
+  <meta name="keywords" content="Graphics Game Engine OpenGL C++ Vulkan">
+  
+  <title>SDFGI - Portfolio</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"flwmxd.github.io","root":"/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Prime`s Portfolio</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/back.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="SDFGI">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-01-15 00:00" pubdate>
+        January 15, 2023 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      49
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">SDFGI</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>The project is a Hybrid GI solution, partly inspired by Lumen and DDGI. The main core idea is to provide a complete GI solution (including Indirect-Light, Infinite-Bounce, Emissive-Lighting, Glossy-Reflection, Shadow, AO) that can run on both Raytracing-supported and non-raytracing hardware. Due to the shortage of time, there are still some performance issues in this project, but as a throwaway, I believe it can provide some new ideas to most of the people who are interested in GI.</p>
+<p>Before we start, let’s talk about DDGI (Dynamic-Diffuse-Global-Illumination)</p>
+<p align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RfRbWnsdwx0" title="SDFGI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</p>
+
+<h2 id="DDGI"><a href="#DDGI" class="headerlink" title="DDGI"></a>DDGI</h2><p>Among the original implementations of DDGI ( <a target="_blank" rel="noopener" href="https://morgan3d.github.io/articles/2019-04-01-ddgi/">description</a>, <a target="_blank" rel="noopener" href="https://jcgt.org/published/0008/02/01/">paper</a>), DDGI is a real-time based probe and ray-tracing technique that mainly addresses the global light diffuse reflection term of dynamic scenes and light sources.</p>
+<p>The traditional light probe is aim to collect light information from the perspective of the probe, and when a point on the screen is to going to be shaded, getting all probes that are close to the shading point, and then interpolation is performed. Therefore, the discrete information obtained by each probe can be reduced to continuous light information through interpolation, but once there is a sudden change in the signal, there can be light leakage problems.</p>
+<p>However, the DDGI can avoid light leakage by saving the geometric information of the scene and then by probability.</p>
+<h3 id="1-DDGI-Probe"><a href="#1-DDGI-Probe" class="headerlink" title="1.DDGI Probe"></a>1.DDGI Probe</h3><p>DDGI Probe uses an Octahedral Map method to store spherical information. The Octahedral Map is a good way to be compressed it into a Texture2D.<br>. (For those familiar with lumen, lumen also uses this way of expressing probes)</p>
+<p><img src="/images/sdfgi/octahedral-map.png" srcset="/img/loading.gif" lazyload alt="Oct"></p>
+<h3 id="2-DDGI-Flow"><a href="#2-DDGI-Flow" class="headerlink" title="2.DDGI Flow"></a>2.DDGI Flow</h3><p>Step1. For each Probe generate 100-300 rays, and trace, to get the current ray’s hit the color and distance information. Therefore, it is necessary to create Texture2D to record the current information.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//Radiance for every ray.</span><br>internal.radiance-&gt;<span class="hljs-built_in">setName</span>(<span class="hljs-string">&quot;DDGI Raytrace Radiance&quot;</span>);<br>internal.radiance-&gt;<span class="hljs-built_in">buildTexture</span>(TextureFormat::R11G11B10F, pipeline.raysPerProbe, totalProbes);<br><br><span class="hljs-comment">//Direction and Depth for every ray.</span><br>internal.directionDepth-&gt;<span class="hljs-built_in">setName</span>(<span class="hljs-string">&quot;DDGI Raytrace Direction Depth&quot;</span>);<br>internal.directionDepth-&gt;<span class="hljs-built_in">buildTexture</span>(TextureFormat::RGBA16, pipeline.raysPerProbe, totalProbes);<br></code></pre></td></tr></table></figure>
+
+<p>Since the diffuse GI of the point where the light hits is provided by the Probe of the previous frame, infinite bounce can be achieved in this way.</p>
+<p><img src="/images/sdfgi/DDGI_Raytrace_Radiance.png" srcset="/img/loading.gif" lazyload alt="Border"></p>
+<p>The vertical axis is the ProbeId and the horizontal axis is the Radiance obtained for each ray.</p>
+<p>Step2. Once the Radiance and Depth are obtained, the probe can be updated, i.e., the Radiance map is used to update the Irradiance of the Probe (while updating the distance information).</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int32_t</span> i = <span class="hljs-number">0</span>;i&lt;<span class="hljs-number">2</span>;i++)<br>&#123;<br>    internal.depth[i]-&gt;<span class="hljs-built_in">setName</span>(<span class="hljs-string">&quot;DDGI Depth Probe Grid &quot;</span> + std::<span class="hljs-built_in">to_string</span>(i));<br>    internal.depth[i]-&gt;<span class="hljs-built_in">buildTexture</span>(TextureFormat::RG16F, depthWidth, depthHeight);    <span class="hljs-comment">//Depth and Depth^2</span><br><br>    internal.irradiance[i]-&gt;<span class="hljs-built_in">setName</span>(<span class="hljs-string">&quot;DDGI Irradiance Probe Grid &quot;</span> + std::<span class="hljs-built_in">to_string</span>(i));<br>    internal.irradiance[i]-&gt;<span class="hljs-built_in">buildTexture</span>(TextureFormat::RGBA16, irradianceWidth, irradianceHeight);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Step3. Border update</p>
+<p>Because DDGI uses bilinear interpolation, special operations are required for the borders.</p>
+<p><img src="/images/sdfgi/update-border.png" srcset="/img/loading.gif" lazyload alt="Border"></p>
+<p>Step4. Each pixel should be sampled by using 8 probes in its neighborhood.<br>One important is that when sampling with probes, we need to perform a visibility test to prevent light leakage problems.</p>
+<ul>
+<li>Visibility testing.<br>Since there is the problem of a wall between the probe and the sampling point, we need to perform visibility tests to avoid light leakage.</li>
+</ul>
+<p><img src="/images/sdfgi/Visibility-check.png" srcset="/img/loading.gif" lazyload alt="Visibility"></p>
+<p>In the above, we know that the distance information $d$ and the square of the distance $d^2$ is stored for each ray tracing, so we can use $d$ and $d^2$ for visibility tests</p>
+<p>Here we introduce the Chebyshev inequality.</p>
+<p>$P(r &gt; d) \leq \frac{Var}{Var + (d - mean) ^ 2}$</p>
+<p>where $r$ is the distance that probe sees the nearest object in the direction of the shading point, $d$ is the distance between the shading point and probe, and $P(r &gt; d)$ represents the probability of no occlusion.</p>
+<p>When $d &gt; mean$, we use Chebyshev weights, otherwise we use 1 directly</p>
+<h3 id="Infinity-Bounce"><a href="#Infinity-Bounce" class="headerlink" title="Infinity Bounce"></a>Infinity Bounce</h3><p>The data from the previous probe frame is repeatedly used to perform an indirect illumination of the current scene, which is calculated to achieve an infinite bounces.</p>
+<p><img src="/images/sdfgi/infinite-bounce.png" srcset="/img/loading.gif" lazyload alt="bounce"></p>
+<h2 id="SDF-Acceleration-Structure"><a href="#SDF-Acceleration-Structure" class="headerlink" title="SDF Acceleration Structure"></a>SDF Acceleration Structure</h2><p>SDF can be said to be the standard for the next generation engine, which not only provides ray tracing-like algorithms, but also supports SDF soft shadows, SDFAO and GPU-Particle collision detection.</p>
+<p>During the Trace phase of DDGI’s Probe, we need to record the distance by each ray as well as the color information. The algorithm can be well implemented on hardware that supports ray tracing, but since most machines do not support hardware ray tracing, we need to use other ways to<br>get the color information.</p>
+<p>First of all, SDF is a very good acceleration structure that can replace hardware ray tracing in some cases, so in current project, for machines that do not support hardware raytracing, we use SDF for replacement.</p>
+<h2 id="SDF-Flow："><a href="#SDF-Flow：" class="headerlink" title="SDF Flow："></a>SDF Flow：</h2><h3 id="Generate-MeshDistanceField"><a href="#Generate-MeshDistanceField" class="headerlink" title="Generate MeshDistanceField"></a>Generate MeshDistanceField</h3><p>For each object in the scene generate its corresponding SDF, i.e. create Texture3D (R16F) with 32-128 (on-demand) resolutions to store distance information. And generate mipmap at the same time.</p>
+<p>Since the SDF generation process uses ray tracing method, we can use Uniform Grid , KD-Tree , BVH-Tree to accelerate the construction. In this project, BHV-Tree is used for accelerated intersection.</p>
+<p>A padding operation is also performed for each object to prevent the problem of leaks caused by objects that are too thin.</p>
+<p><img src="/images/sdfgi/thin-mesh.png" srcset="/img/loading.gif" lazyload alt="Visibility"></p>
+<ul>
+<li>Step2. Create GlobalDistanceField</li>
+</ul>
+<p>After having the above MeshDistanceField, GlobalDistanceField is created and its corresponding Mimmap is generated, since the current algorithm does not use the Lumen-like Detail-Trace (it may be implemented in a future version, but GlobalSDF can work better with DDGI-Cascade). Global is created to accelerate the SDF-Trace. </p>
+<p><img src="/images/sdfgi/global-sdf.png" srcset="/img/loading.gif" lazyload alt="GSDF"></p>
+<h3 id="The-generation-algorithm-of-GlobalDistanceField"><a href="#The-generation-algorithm-of-GlobalDistanceField" class="headerlink" title="The generation algorithm of GlobalDistanceField"></a>The generation algorithm of GlobalDistanceField</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><br><span class="hljs-keyword">float</span> minDistance = DistanceMax;<br><br>minDistance *= <span class="hljs-built_in">imageLoad</span>(uGlobalSDF,voxelCoord).r;<br><br><span class="hljs-keyword">for</span> (uint i = <span class="hljs-number">0</span>; i &lt; pushConsts.objectsCount; i++)<br>&#123;<br>    uint objId = pushConsts.objects[i];<br>    MeshDistanceField meshDF = data[objId];<br>    minDistance = <span class="hljs-built_in">min</span>(minDistance, <span class="hljs-built_in">distanceToMeshSDF</span>(minDistance, meshDF, uMeshSDF[objId], voxelWorldPos));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>In the game, we need to satisfy the real time, so we need to update the GlobalSDF when some elements in the scene are changed. Therefore, for dividing the space, i.e., updating the grid where dynamic objects are moved, in current algorithm we use the Uniform Grid (Chunk).</p>
+<p><img src="/images/sdfgi/space-chunk.png" srcset="/img/loading.gif" lazyload alt="GSDF"></p>
+<p>A attention point is that the generation of Mimmap needs to be calculated manually, we can not calculate the mipmap value by average the original one, we have to choose the minmum value. the way looks like Hi-Z.</p>
+<h3 id="SDF-Surface-Material"><a href="#SDF-Surface-Material" class="headerlink" title="SDF Surface Material"></a>SDF Surface Material</h3><p>Once we have the SDF acceleration structure, we can use the SDF for tracing, but the SDF is essentially a function describing the distance without any color or material information, so we need to build additional data types to generate the color and material information of the corresponding points of the SDF.</p>
+<p>The implementation of Lumen<a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/lumen-technical-details-in-unreal-engine/">Surface Cache</a> is a very efficient way to obtain SDF materials, and the same approach is also used in the current algorithm for SDF material representation</p>
+<h4 id="Surface-GBuffer"><a href="#Surface-GBuffer" class="headerlink" title="Surface-GBuffer"></a>Surface-GBuffer</h4><p>Each object in the scene is captured on 6 sides and rendered to a different SurfaceAtlas. This process is the same as the traditional GBuffer process.<br>In the current algorithm, we generate Color/Normal/Depth/PBR/Emissive/LightCache Atlas and TileBuffer for each face.</p>
+<p><img src="/images/sdfgi/chair.png" srcset="/img/loading.gif" lazyload alt="Chair"></p>
+<p><img src="/images/sdfgi/SurfaceCache.png" srcset="/img/loading.gif" lazyload alt="SurfaceCache"></p>
+<h4 id="Culling"><a href="#Culling" class="headerlink" title="Culling"></a>Culling</h4><p>In order to improve the overall rendering efficiency and avoid overdraw, we need to cull the objects in the scene (including the Tile associated with each object) in this stage.</p>
+<h4 id="Light-Culling"><a href="#Light-Culling" class="headerlink" title="Light Culling"></a>Light Culling</h4><p>The lighting just light objects within its range for point and spot lights, and all potentially affected objects (as needed) for parallel light intensities.</p>
+<h4 id="Object-Culling"><a href="#Object-Culling" class="headerlink" title="Object Culling"></a>Object Culling</h4><p>The objects outside the camera Far-Plane are culled, and the objects whose volume is smaller than the size threshold are ignored. Since the world space is divided into different Chunks, in order to ensure the performance of SDF after intersection, a culling operation is performed here, i.e., each Chunk keeps the objects that intersect with the current Chunk and sets a maximum limit on the number of objects.</p>
+<h4 id="Obtain-Material"><a href="#Obtain-Material" class="headerlink" title="Obtain Material"></a>Obtain Material</h4><p>Obtaining the material for a point in the SDF space can be done as follows.</p>
+<ol>
+<li><p>Get the world coordinates after intersection, and project the current world coordinates to the corresponding ChunkId.</p>
+</li>
+<li><p>Iterate through all the Tile in the current Chunk, and judge the direction of the normal to the hit point and the orientation of the surface, if the current ray is almost parallel to the surface, then discard it. Otherwise, using normal to represent weight for its surface.</p>
+</li>
+<li><p>If not parallel to the current front, try to sample. Because there is a problem of accuracy after SDF intersection, we obtain 4 points around the current hit point for a bilinear interpolation to ensure the correctness of sampling when sampling.</p>
+</li>
+</ol>
+<h3 id="Lighting"><a href="#Lighting" class="headerlink" title="Lighting"></a>Lighting</h3><h4 id="Direct-Lighting"><a href="#Direct-Lighting" class="headerlink" title="Direct Lighting"></a>Direct Lighting</h4><p>Afterwards, the Tile data of all affected objects are updated (SDF scene representation does not require real-time, so it can be operated in latency-frames), and a direct lighting is performed using the current SDF-GBuffer and stored in SurfaceLightCache. Because SDF provides visibility queries, the SurfaceDirectLight stage can be directly query shadows using SDF, as shown in the following figure.</p>
+<p><img src="/images/sdfgi/SDFShadow.png" srcset="/img/loading.gif" lazyload alt="SDFShadow-Surface"><br><img src="/images/sdfgi/SDFShadow-Surface.png" srcset="/img/loading.gif" lazyload alt="SDFShadow-Surface"></p>
+<h4 id="SDF-Infinity-Bounce"><a href="#SDF-Infinity-Bounce" class="headerlink" title="SDF Infinity Bounce"></a>SDF Infinity Bounce</h4><p>Infinite Bounce is the original function of DDGI. One point is that each indirect illumination result will be written back to SDFScene(LightCache) until convergence.</p>
+<p><img src="/images/sdfgi/bounce.gif" srcset="/img/loading.gif" lazyload alt="bounce2"></p>
+<h2 id="Raytracing"><a href="#Raytracing" class="headerlink" title="Raytracing"></a>Raytracing</h2><p>In the case of hardware support, ray tracing can be enabled instead of SDF-Trace, and the other implementation algorithms do not differ much, so I won’t go into too much detail in this section.</p>
+<h2 id="Reflection"><a href="#Reflection" class="headerlink" title="Reflection"></a>Reflection</h2><p>The reflection of the object surface is basically similar to the implementation of ray tracing and SDF-Trace, which mainly deals with Glossy Reflection and Specular Reflection<br>In the current algorithm implementation, when the surface roughness of the object is less than 0.05, we can think the surface as specular, which uses the specular illumination algorithm</p>
+<p><img src="/images/sdfgi/ibl_specular_lobe.png" srcset="/img/loading.gif" lazyload alt="specular"></p>
+<p>When the material of the object surface is between 0.05 and 0.7, we consider the object material as Glossy at this time, because Glossy material produces reflected light in different directions. To ensure that the sampling is spatially homogeneous, we use <a target="_blank" rel="noopener" href="https://belcour.github.io/blog/slides/2019-sampling-bluenoise/index.html">Blue noise and Sobol sequence</a> to generate samples, while using importance sampling to ensure its fast convergence (<a target="_blank" rel="noopener" href="https://learnopengl.com/PBR/IBL/Specular-IBL">Reference</a>)</p>
+<p>When the material roughness is greater than 0.7, we directly sample the current surface using a probe.</p>
+<p>Notable points are: SDF can not be specular reflection (because the scene for SDF expression), in order to make up for the shortcomings of specular reflection, you can add screen space reflection in the SDF reflection (not implemented) <a target="_blank" rel="noopener" href="https://docs.unrealengine.com/5.0/en-US/lumen-global-illumination-and-reflections-in-unreal-engine/">Lumen</a></p>
+<p>SDF Reflection<br><img src="/images/sdfgi/sdf-glossy.png" srcset="/img/loading.gif" lazyload alt="sdf-glossy"><br>Raytracing Reflection<br><img src="/images/sdfgi/raytrace-glossy.png" srcset="/img/loading.gif" lazyload alt="raytrace-glossy"></p>
+<h2 id="Soft-Shadow"><a href="#Soft-Shadow" class="headerlink" title="Soft Shadow"></a>Soft Shadow</h2><p>SDF can support soft shadow effect, but due to the accuracy of GlobalSDF, it is currently not recommended to use GlobalSDF for visibility calculation.</p>
+<p>But provide a implementation. <a target="_blank" rel="noopener" href="https://blog.demofox.org/2020/05/16/using-blue-noise-for-raytraced-soft-shadows/">soft shading based on ray tracing method</a> (higher cost)</p>
+<p><img src="/images/sdfgi/shadow-compare.png" srcset="/img/loading.gif" lazyload alt="shadow"></p>
+<p>In the current algorithm, the number of samples for soft shadows 1, so there will be a lot of noise in the scene, in the project used the way of SVGF for denoising (the same reflection).</p>
+<h2 id="Denoise"><a href="#Denoise" class="headerlink" title="Denoise"></a>Denoise</h2><p>Current algorithms for real-time ray tracing are basically based on primary sampling + denoise. In this algorithm, the Denoiser is mainly applied to Glossy reflections and Soft shadows.</p>
+<p><img src="/images/sdfgi/reflection-denoise.png" srcset="/img/loading.gif" lazyload alt="denoise"></p>
+<h3 id="Gaussian-Filtering"><a href="#Gaussian-Filtering" class="headerlink" title="Gaussian Filtering"></a>Gaussian Filtering</h3><p>Gaussian filter is a kind of low-pass filter (its core is to find the average value in the filter kernel), the result after the filter is finished is the low frequency information, so the filtered result will appear the whole screen blurred. But for the game, low-pass filtering is not perfect. <a target="_blank" rel="noopener" href="http://rastergrid.com/blog/2010/09/efficient-gaussian-blur-with-linear-sampling/">Reference</a></p>
+<h3 id="Bilateral-Filtering"><a href="#Bilateral-Filtering" class="headerlink" title="Bilateral Filtering"></a>Bilateral Filtering</h3><p>Since Gaussian filtering is a low-pass filter, it does not maintain the boundaries well for images with large signal variations. Therefore, we can use bilateral filtering to process the image. In bilateral filtering, an important reference value is the change in brightness of the current pixel as a weight, i.e., a large change in brightness has a small weight. <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bilateral_filter">Reference</a></p>
+<p><img src="/images/sdfgi/filter.jpg" srcset="/img/loading.gif" lazyload alt="Bilateral"></p>
+<h3 id="Joint-Bilateral-Filtering"><a href="#Joint-Bilateral-Filtering" class="headerlink" title="Joint Bilateral Filtering"></a>Joint Bilateral Filtering</h3><p>In Gaussian filtering, we consider the distance between pixels as the contributing weight, and in bilateral filtering, we consider the brightness of the pixels. In real-time rendering we can use GBuffer to guide the filtering, and if more factors are considered (e.g. depth, normal features, etc.) we call it joint bilateral filtering.</p>
+<h3 id="SVGF"><a href="#SVGF" class="headerlink" title="SVGF"></a>SVGF</h3><p>Spatiotemporal Variance-Guided Filtering<br><a target="_blank" rel="noopener" href="https://research.nvidia.com/publication/2017-07_spatiotemporal-variance-guided-filtering-real-time-reconstruction-path-traced">NVIDA-Link</a> </p>
+<p>Among the current GI algorithms we chose SVGF for denoise, which is a denoise algorithm running on Spatial and Temporal, using joint bilateral filtering with the addition of variance analysis and some other features.</p>
+<p>In SVGF we use an <a target="_blank" rel="noopener" href="https://jo.dreggn.org/home/2010_atrous.pdf">Atrous</a> for the filtering operation.</p>
+<h4 id="Spatial-Filtering"><a href="#Spatial-Filtering" class="headerlink" title="Spatial Filtering"></a>Spatial Filtering</h4><p>In the spatial filtering part, SVGF uses the À-Trous wavelet filter, and also uses the progressive increase of Filter size to reduce the computational resource overhead, as shown in Fig.</p>
+<p><img src="/images/sdfgi/SVGF-Spatial.jpg" srcset="/img/loading.gif" lazyload alt="SVGF-Depth"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> yy = -RADIUS; yy &lt;= RADIUS; yy++)<br>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> xx = -RADIUS; xx &lt;= RADIUS; xx++)<br>    &#123;<br>        <span class="hljs-keyword">const</span> ivec2 coord = coord + <span class="hljs-built_in">ivec2</span>(xx, yy) * STEP_SIZE; <br>        <span class="hljs-comment">// Edge stop....</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="Depth-factor"><a href="#Depth-factor" class="headerlink" title="Depth factor"></a>Depth factor</h5><p><img src="/images/sdfgi/SVGF-Depth.png" srcset="/img/loading.gif" lazyload alt="SVGF-Depth"></p>
+<p>In Atrous, we first consider the depth factor, as in Figure A/B, because AB is on the same face, so in the process of filtering, AB should contribute to each other, but there is a difference in the depth of AB, so for the processing of depth, we will be more biased to use the gradient of depth for the operation.</p>
+<h5 id="Normal-factor"><a href="#Normal-factor" class="headerlink" title="Normal factor"></a>Normal factor</h5><p>Next we consider the effect of normals on denoise</p>
+<p><img src="/images/sdfgi/SVGF-Normal.png" srcset="/img/loading.gif" lazyload alt="SVGF-Normal"></p>
+<p>As shown in the figure, if the angle between the two points of AB is smaller, it means that the direction of the two points may exist all the way, so the value of $ W_n $ is more convergent with 1</p>
+<h5 id="Color-factor"><a href="#Color-factor" class="headerlink" title="Color factor"></a>Color factor</h5><p><img src="/images/sdfgi/SVGF-Color.png" srcset="/img/loading.gif" lazyload alt="SVGF-Color"></p>
+<p>The contribution of color to the weight is mainly reflected in the change of color brightness, i.e. Luminance, but due to the existence of noise, the original noised color may be obtained, so we can correct this problem by variance.</p>
+<h4 id="Temporal-Filtering"><a href="#Temporal-Filtering" class="headerlink" title="Temporal Filtering"></a>Temporal Filtering</h4><p>The filtering in time mainly reuses the information from the previous frame, in this case we can think of increasing the number of samples of the current pixel.</p>
+<p>In order to obtain information about the previous frame’s pixels in a reasonable way, we use the Motion Vector method to record the direction of the camera’s movement, so that in the current frame, the specific pixels of the previous frame can be mapped back through the Motion Vector.</p>
+<h5 id="Normal-factor-1"><a href="#Normal-factor-1" class="headerlink" title="Normal factor"></a>Normal factor</h5><p>The main check is when the angle between two points is less than a specific threshold value, and the normal can be judged using the following formula</p>
+<p>$Fn = |dot(n(a),n(b))| - T $(T is the threshold value)</p>
+<p>If the current Fn is greater than 0, then the two points are not in the same plane and the current point is discarded.</p>
+<h5 id="MeshID"><a href="#MeshID" class="headerlink" title="MeshID"></a>MeshID</h5><p>Because we can use the information of GBuffer in this stage, we can get the MeshID information of the corresponding point, and discard the point if the MeshIDs of two points of A/B do not match.</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Graphics/">Graphics</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/08/01/Learn-Nanite/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Fake-Nanite</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/10/MapleEngine/">
+                        <span class="hidden-mobile">Maple Engine</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
