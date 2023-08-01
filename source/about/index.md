@@ -8,12 +8,7 @@ A Game Engine Programmer, like playing the guitar
 
 ## Main Contributes
 
-##### [MapleStory-Mobile-Game with 2D engine ](https://github.com/flwmxd/PharaohStroy)
-
-##### [Maple Engine](https://github.com/flwmxd/MapleEngine)
-
-##### [Raven 3D Engine](https://gitlab.com/SC17BH/hpg_group_project)
-
+##### [ Hybrid GI solution, based on DDGI ( include Ray-Tracing and SDF-Tracing ) ](https://github.com/flwmxd/LuxGI)
 
 ## Education ：
 
