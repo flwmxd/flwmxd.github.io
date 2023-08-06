@@ -189,7 +189,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      6
        分钟
     </span>
   
@@ -223,12 +223,57 @@
             
             <div class="markdown-body">
               <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Implement Nanite in my personal Game Engine( it is an experimental function now).<br>the goal is to render more than 10 billion faces.</p>
-<p align="center">
+<h2 id="PPT-Click-Here"><a href="#PPT-Click-Here" class="headerlink" title="PPT Click Here"></a>PPT <a href="../../../../nodeppt/dist/nanite.html">Click Here</a></h2><p align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/79aaFzgOso0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </p>
 
-
-<h1 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h1><h1 id="Cluster-Group"><a href="#Cluster-Group" class="headerlink" title="Cluster Group"></a>Cluster Group</h1><h1 id="Culling"><a href="#Culling" class="headerlink" title="Culling"></a>Culling</h1><h2 id="Frustum-Culling"><a href="#Frustum-Culling" class="headerlink" title="Frustum Culling"></a>Frustum Culling</h2><h2 id="Occlusion-Culling"><a href="#Occlusion-Culling" class="headerlink" title="Occlusion Culling"></a>Occlusion Culling</h2><h1 id="Visibility-Buffer"><a href="#Visibility-Buffer" class="headerlink" title="Visibility Buffer"></a>Visibility Buffer</h1><h2 id="Overdraw"><a href="#Overdraw" class="headerlink" title="Overdraw"></a>Overdraw</h2><h2 id="Materil-ID"><a href="#Materil-ID" class="headerlink" title="Materil ID"></a>Materil ID</h2>
+<h1 id="GPUDriven-Pipeline"><a href="#GPUDriven-Pipeline" class="headerlink" title="GPUDriven Pipeline"></a>GPUDriven Pipeline</h1><p>Due to the increasingly high performance requirements of AAA games, the traditional rendering pipeline process cannot satisfy the real-time performance of the current AAA games. Therefore, in recent years, almost all engines will perform rendering-related operations on the GPU. one of the main purposes is to reduce the latencies between CPU-GPU, and at the same time release the CPU, so that the CPU can focus more on other tasks (AI, physical computing, network…)</p>
+<h2 id="Triditional-Rendering"><a href="#Triditional-Rendering" class="headerlink" title="Triditional Rendering"></a>Triditional Rendering</h2><h2 id="Bottleneck-of-Triditional-Rendering"><a href="#Bottleneck-of-Triditional-Rendering" class="headerlink" title="Bottleneck of Triditional Rendering"></a>Bottleneck of Triditional Rendering</h2><ul>
+<li>High CPU overload<ul>
+<li>Frustum/Occlusion Culling</li>
+<li>Prepare drawCall</li>
+</ul>
+</li>
+<li>GPU idle time<ul>
+<li>CPU can not follow up GPU</li>
+</ul>
+</li>
+<li>High driver overhead<ul>
+<li>GPU state exchange overhead when solving large amount of drawcalls</li>
+</ul>
+</li>
+</ul>
+<h2 id="GPUDriven-Rendering"><a href="#GPUDriven-Rendering" class="headerlink" title="GPUDriven Rendering"></a>GPUDriven Rendering</h2><ul>
+<li>GPU decides what objects are actually drawed<ul>
+<li>LOD Selection</li>
+<li>Visiblity Culling on GPU</li>
+</ul>
+</li>
+<li>No CPU/GPU roundtrip</li>
+</ul>
+<h2 id="What-Assassins-Creed-did"><a href="#What-Assassins-Creed-did" class="headerlink" title="What Assassins Creed did ?"></a>What Assassins Creed did ?</h2><ul>
+<li><p>Use <strong>mesh cluster</strong> rendering</p>
+</li>
+<li><p>In some cases, the culling system is not efficiency. </p>
+<ul>
+<li>it could case overdraw, but parts of triangles players can not see it.</li>
+</ul>
+</li>
+</ul>
+<h1 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h1><ul>
+<li>It is the minimum culling unit. <ul>
+<li>each <strong>Cluster</strong> contains 128 triangles.</li>
+</ul>
+</li>
+</ul>
+<h1 id="Cluster-Group"><a href="#Cluster-Group" class="headerlink" title="Cluster Group"></a>Cluster Group</h1><ul>
+<li>it is the simplification unit<ul>
+<li>each <strong>Cluster Group</strong> contains 128 triangles.</li>
+</ul>
+</li>
+</ul>
+<h1 id="QEM-algorithm"><a href="#QEM-algorithm" class="headerlink" title="QEM algorithm"></a>QEM algorithm</h1><p>The central idea of the algorithm is to iteratively remove edges in the mesh through a process known as edge contraction which merges the vertices at an edge’s endpoints into a new vertex that optimally preserves the original shape of the mesh. This vertex position can be solved for analytically by minimizing the squared distance of each adjacent triangle’s plane to its new position after edge contraction. With this error metric, edges can be efficiently processed using a priority queue to remove edges with the lowest cost until the mesh has been sufficiently simplified.</p>
+<h1 id="Culling"><a href="#Culling" class="headerlink" title="Culling"></a>Culling</h1><h2 id="Frustum-Culling"><a href="#Frustum-Culling" class="headerlink" title="Frustum Culling"></a>Frustum Culling</h2><h2 id="Occlusion-Culling"><a href="#Occlusion-Culling" class="headerlink" title="Occlusion Culling"></a>Occlusion Culling</h2><h1 id="Visibility-Buffer"><a href="#Visibility-Buffer" class="headerlink" title="Visibility Buffer"></a>Visibility Buffer</h1><h2 id="Overdraw"><a href="#Overdraw" class="headerlink" title="Overdraw"></a>Overdraw</h2><h2 id="Materil-ID"><a href="#Materil-ID" class="headerlink" title="Materil ID"></a>Materil ID</h2>
             </div>
             <hr>
             <div>

@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset=UTF-8><title>Fake Nanite Implementation - By Tian</title><link rel=stylesheet href=https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css><link rel=stylesheet href=https://cdn.staticfile.org/prism/1.15.0/themes/prism.min.css><link rel=stylesheet href=https://cdn.staticfile.org/KaTeX/0.10.0-rc.1/katex.min.css><link href=./css/chunk-vendors.4e4765ff.css rel=stylesheet></head><body><div><article id=webslides><section slide class="slide bg-black-blue aligncenter" image="/images/nanite/nanite.png .drak"><span class="background background-drak" style="background-image:url('/images/nanite/nanite.png')"></span><div class=wrap wrap=true><h1 class=text-shadow>Fake Nanite Implementation</h1><h1 class=text-intro></h1><p><a href="https://www.youtube.com/watch?v=79aaFzgOso0" class="button ghost" target=_blank><i class="fa fa-youtube"></i> Youtube</a> <a href=https://github.com/flwmxd class="button ghost" target=_blank><i class="fa fa-github"></i> Github</a></p></div></section><section slide class="slide bg-black-blue slide-top"><div class=wrap wrap=true><div><h3>GPU-Driven Pipeline</h3><p>Due to the increasingly high performance requirements of AAA games, the traditional rendering pipeline process cannot satisfy the real-time performance of the current AAA games. Therefore, in recent years, almost all engines will perform rendering-related operations on the GPU. one of the main purposes is to reduce the latencies between CPU-GPU, and at the same time release the CPU, so that the CPU can focus more on other tasks (AI, physical computing, network...)</p></div></div></section><section slide class="slide bg-black-blue slide-top"><div class=wrap wrap=true><div><h2>Triditional Rendering</h2><h2>Bottleneck of Triditional Rendering</h2><ul><li>High CPU overload<ul><li>Frustum/Occlusion Culling</li><li>Prepare drawCall</li></ul></li><li>GPU idle time<ul><li>CPU can not follow up GPU</li></ul></li><li>High driver overhead<ul><li>GPU state exchange overhead when solving large amount of drawcalls</li></ul></li></ul></div></div></section><section slide class="slide bg-black-blue slide-top"><div class=wrap wrap=true><div><h2>What Assassins Creed did ?</h2><ul><li><p>Use <strong>mesh cluster</strong> rendering</p></li><li><p>In some cases, the culling system is not efficiency.</p><ul><li>it could case overdraw, but parts of triangles players can not see it.</li></ul></li></ul></div></div></section><section slide class="slide bg-black-blue slide-top"><div class=wrap wrap=true><div><h3>Cluster</h3><ul><li>It is the minimum culling unit.<ul><li>each <strong>Cluster</strong> contains 128 triangles.</li></ul></li></ul><h3>Cluster Group</h3><ul><li>it is the simplification unit<ul><li>each <strong>Cluster Group</strong> contains 128 triangles.</li></ul></li></ul><h3>QEM Algorithm</h3><p>The central idea of the algorithm is to iteratively remove edges in the mesh through a process known as edge contraction which merges the vertices at an edge's endpoints into a new vertex that optimally preserves the original shape of the mesh</p></div></div></section><section slide class="slide bg-black-blue slide-top"><div class=wrap wrap=true><div><h3>Culling</h3><h4>Frustum Culling</h4><h4>Occlusion Culling</h4></div></div></section><section slide class="slide bg-black-blue slide-top"><div class=wrap wrap=true><div><h3>Visibility Buffer</h3></div></div></section></article></div><script src=https://cdn.staticfile.org/echarts/4.8.0/echarts.min.js></script><script>window.pluginsOptions = {}
+
+
+
+    window.webslidesOptions = {}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    let isPrintMode = false;
+    if(~location.search.indexOf('print-pdf')){
+        isPrintMode = true;
+        WebSlides.registerPlugin('scroll', function(){});
+    }
+    const wsOptions = {
+        loop: false
+    };
+    if(window.webslidesOptions){
+        for (let i in webslidesOptions){
+            if(webslidesOptions.hasOwnProperty(i)){
+                wsOptions[i] = webslidesOptions[i];
+            }
+        }
+    }
+    const ws = new WebSlides(wsOptions)
+
+    window.wsInstance = ws;
+    if(isPrintMode){
+        ws.slides.forEach(s=>s.show())
+    }
+}, false)</script><script src=./js/chunk-vendors.js></script><script src=./js/nanite.js></script></body></html>
