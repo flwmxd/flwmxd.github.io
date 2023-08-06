@@ -28,8 +28,8 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
-
+skip_render: 
+  - nodeppt/**
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
@@ -104,4 +104,4 @@ theme: fluid
 deploy:
   type: 'git'
   branch: gh-pages
-
+  repo: https://github.com/flwmxd/flwmxd.github.io.git
