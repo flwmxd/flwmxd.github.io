@@ -93,7 +93,8 @@ stateDiagram-v2
 
 The idea behind this approach can be summarized as follows: if an entity has a particular set of components, take the pool (also known as archetype) for the entities that have that same set (if it doesn’t already exist, create it) and assign the entity and all its components to that pool. Whenever you add/remove a component to/from an entity, pick up everything again and move the entity and all its components from a pool to the other, from an archetype to the other.
 
-Here is an picture demo.
+
+![Archetypes](/images/ecs/ArchetypeDiagram.png)
 
 <slide class="bg-black-blue slide-top">
 
