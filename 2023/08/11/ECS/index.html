@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="An advanced ECS Architecture build-in MapleEngine">
+  <meta name="author" content="Prime">
+  <meta name="keywords" content="Graphics Game Engine OpenGL C++ Vulkan">
+  
+  <title>Advanced ECS Architecture - Portfolio</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"flwmxd.github.io","root":"/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Prime`s Portfolio</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/back.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Advanced ECS Architecture">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-08-11 00:00" pubdate>
+        August 11, 2023 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      37
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Advanced ECS Architecture</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>This article will try to explain the deep understanding of ecs architecture, which include the memory model, how to do in multi-thread with look-free and abstract interface for developer.</p>
+<h1 id="CPU-Cache"><a href="#CPU-Cache" class="headerlink" title="CPU-Cache"></a>CPU-Cache</h1><p>Before talking about ecs architecture, I will try to explain an important knowledge “CPU-Cache”. </p>
+<p><img src="/images/ecs/cpu-overview.png" srcset="/img/loading.gif" lazyload alt="cpu-overview"></p>
+<p>The main purpose of CPU cache is to reduce the latency or delay in data retrieval. When the CPU needs to access data, it first checks whether the data is available in the cache. If the data is present in the cache (cache hit), the CPU can retrieve it much faster than if it had to fetch the data from the main memory (cache miss). This helps to mitigate the performance bottleneck caused by the slower access times of main memory.</p>
+<p>There are typically three levels of CPU cache: L1, L2, and L3. These levels form a hierarchy with different sizes and access speeds:</p>
+<p>The cache hierarchy is designed to exploit the principle of <strong>spatial and temporal locality</strong>, where programs tend to access data and instructions that are close to what they’ve accessed recently. By keeping frequently accessed data in the cache, the CPU can operate more efficiently and reduce the time spent waiting for data from main memory.</p>
+<h2 id="Spatial-and-Temporal-Locality"><a href="#Spatial-and-Temporal-Locality" class="headerlink" title="Spatial and Temporal Locality"></a>Spatial and Temporal Locality</h2><h3 id="Spatial-Locality"><a href="#Spatial-Locality" class="headerlink" title="Spatial Locality"></a>Spatial Locality</h3><p>Spatial locality refers to the tendency of a program to access data located near or close to the data that has been recently accessed. In other words, if a program accesses a particular memory location, it is likely to access nearby memory locations in the near future. This principle is rooted in the idea that data in memory is often stored in contiguous blocks, so accessing one piece of data often implies accessing neighboring data as well.<br>For example, when iterating over an array in a loop, spatial locality suggests that the next element to be accessed is likely to be stored in close proximity to the current element. Caches exploit spatial locality by fetching entire <strong>cache lines (blocks of contiguous memory)</strong> when a memory location is accessed. This way, if a program accesses one piece of data, it’s likely to access other nearby data soon, improving cache hit rates.</p>
+<h3 id="Temporal-Locality"><a href="#Temporal-Locality" class="headerlink" title="Temporal Locality"></a>Temporal Locality</h3><p>Temporal locality refers to the tendency of a program to access the same data or instructions repeatedly over a short period of time. In other words, if a piece of data is accessed once, it’s likely to be accessed again in the near future. This principle is based on the observation that programs often exhibit repetitive behavior and reuse the same data multiple times within a short timeframe.<br>For instance, in a loop that processes the same data multiple times, temporal locality implies that the loop will repeatedly access the same data elements. Caches leverage temporal locality by keeping recently accessed data in the cache. If a piece of data is accessed once and stored in the cache, subsequent accesses to the same data can be served quickly from the cache.</p>
+<h2 id="Who-is-Faster"><a href="#Who-is-Faster" class="headerlink" title="Who is Faster ?"></a>Who is Faster ?</h2><p>Assuming there is a matrix(N x M), we have these two approaches to iterate. which one is faster?</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i&lt;N; I++)<br>      <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;j&lt;M; j++) <br>             <span class="hljs-built_in">print</span>(matrix[i][j]);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i&lt;M; I++)<br>      <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>;j&lt;N; j++) <br>             <span class="hljs-built_in">print</span>(matrix[j][i]);<br></code></pre></td></tr></table></figure>
+<h3 id="Iteration-By-Row"><a href="#Iteration-By-Row" class="headerlink" title="Iteration By Row"></a>Iteration By Row</h3><p>the answer is the <strong>first one</strong>. but why?  we use an example to explain. Look at the picture below. (ignored L3 cache.)</p>
+<p>we use the first approch to iterate means iterating by row.</p>
+<p>when the CPU wants to access matrix, it is not cache. so it would load a <strong>cache line</strong> into L2/L1.<br><img src="/images/ecs/load2.png" srcset="/img/loading.gif" lazyload alt="cpu-load into L2"><br><img src="/images/ecs/load3.png" srcset="/img/loading.gif" lazyload alt="cpu-load into L1"></p>
+<p>now the cache line is mapped into L1/L2, the CPU can access matrix[N][0], matrix[N][1], matrix[N][2], etc quickly becuase they are in a contiguous block.</p>
+<h3 id="Iteration-By-Column"><a href="#Iteration-By-Column" class="headerlink" title="Iteration By Column"></a>Iteration By Column</h3><p><img src="/images/ecs/load-by-column.png" srcset="/img/loading.gif" lazyload alt="load-by-column"></p>
+<p>but if we iterate matrix by column, in most cases the elements matrix[0][M] , matrix[1][M], and matrix[2][M] are not contiguous, which would cause a very high-frequency cache miss. Thus, the overall efficiency would be slower.</p>
+<h2 id="ECS-Architecture-at-First-impression"><a href="#ECS-Architecture-at-First-impression" class="headerlink" title="ECS Architecture at First impression"></a>ECS Architecture at First impression</h2><p>The most obvious implementation of a component based model is the one that involves maps (or sort of) and objects taken directly from the typical OOP world</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs markdown">void system(std::vector<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">GameObjects</span>&gt;</span></span> &amp;objects) &#123;<br><span class="hljs-code">    for(auto &amp;object: objects) &#123;</span><br><span class="hljs-code">        if(object.has&lt;position, velocity&gt;()) &#123;</span><br><span class="hljs-code">            auto &amp;pos = object.get&lt;position&gt;();</span><br><span class="hljs-code">            auto &amp;vel = object.get&lt;velocity&gt;();</span><br><span class="hljs-code">            //handle your logic.</span><br><span class="hljs-code">        &#125;</span><br><span class="hljs-code">    &#125;</span><br><span class="hljs-code">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Memory-Model"><a href="#Memory-Model" class="headerlink" title="Memory Model"></a>Memory Model</h3><p>In this example, so the memory looks like this. </p>
+<pre><code class=" mermaid">stateDiagram-v2
+    position --&gt; object
+    velocity --&gt; object
+    components --&gt; object
+
+    position2 --&gt; object2
+    velocity2 --&gt; object2
+    components2 --&gt; object2
+
+</code></pre>
+
+<h3 id="Problems"><a href="#Problems" class="headerlink" title="Problems ?"></a>Problems ?</h3><ul>
+<li>components are scattered around in memory and you’ve multiple jumps each and every time you access them.<ul>
+<li>you don’t know at any time what are the game objects that match a given query and thus you must iterate all of them in each system</li>
+<li>thus, there is a big performance issue.</li>
+</ul>
+</li>
+</ul>
+<h2 id="ECS-Architecture-at-Second-impression"><a href="#ECS-Architecture-at-Second-impression" class="headerlink" title="ECS Architecture at Second impression"></a>ECS Architecture at Second impression</h2><p>From the last example, we can see that <strong>the GameObject</strong> were nothing more than <strong>containers</strong> for components</p>
+<ul>
+<li>Components were stored in maps by game objects and every game object had its own set of components. <ul>
+<li>Thus, It should be quite easy to get rid of these wrappers and change a bit the layout, so that components of a same type are stored together. it could look like this.</li>
+</ul>
+</li>
+</ul>
+<p>and then we can try to get rid of object and rename it to entity, becuase it is pointless. </p>
+<pre><code class=" mermaid">graph LR
+entity1 --&gt; entity2 --&gt; entity3 --&gt; entity4 --&gt;  entityN
+component --&gt; component2 --&gt; component3 --&gt; component4 --&gt; componentN 
+</code></pre>
+
+<p>but there is a problem, not all entities have same components. thus there are some solutions to solve it.</p>
+<h3 id="Code-Appearance"><a href="#Code-Appearance" class="headerlink" title="Code Appearance"></a>Code Appearance</h3><p>ECS Architecture is totally different with OOP. so for each object, we can call it as <strong>entity</strong>, in this case it is only an integer for representing current object id and managed by central registry .<br>in order to accelerating accessing components data, each components would be storaged in a pools( continous memory block );</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Registry</span>&#123;<br><br>   <span class="hljs-function">entityId <span class="hljs-title">create</span><span class="hljs-params">()</span></span>&#123;....&#125;<br><br>   <span class="hljs-function"><span class="hljs-keyword">template</span>&lt;Comp&gt;</span><br><span class="hljs-function">   Comp&amp; <span class="hljs-title">emplace</span><span class="hljs-params">(Args&amp;&amp;...args)</span></span>&#123;....&#125;<br><br>   SparseSet&lt;entity&gt; entites;<br>&#125;;<br><br><span class="hljs-keyword">template</span>&lt;Comp&gt;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">StoragePool</span><br>&#123;<br>   Comp[MAX_LENGHT] componts;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h3 id="Archetypes"><a href="#Archetypes" class="headerlink" title="Archetypes"></a>Archetypes</h3><p>The idea behind this approach can be summarized as follows: if an entity has a particular set of components, take the pool (also known as archetype) for the entities that have that same set (if it doesn’t already exist, create it) and assign the entity and all its components to that pool. Whenever you add/remove a component to/from an entity, pick up everything again and move the entity and all its components from a pool to the other, from an archetype to the other.</p>
+<p><img src="/images/ecs/ArchetypeDiagram.png" srcset="/img/loading.gif" lazyload alt="Archetypes"></p>
+<ul>
+<li>How does archetypes solve the problem of finding all the entities that have certain components?<ul>
+<li><em><strong>The triditional way</strong></em> is iterating all the entities and test them to know if they have the desired components.</li>
+<li><em><strong>The Archetype solution</strong></em> is iterating all the archetypes (much less than the entities), then return all the entities from the archetypes that are built for a set of components that contains at least the desired ones.</li>
+</ul>
+</li>
+<li>What are the drawbacks ?<ul>
+<li>Every time a component is added or removed, an entity and all its components are moved from an archetype to another one. This affects to an extent the construction and destruction of components</li>
+<li>Main issue is the archetypes’s fragmentation. which means if you have a high number of possible combinations of components assigned to different entities at runtime and this will definitely affect the iterations to an extent by adding more and more jumps to find all the entities.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Sparse-Sets"><a href="#Sparse-Sets" class="headerlink" title="Sparse Sets"></a>Sparse Sets</h3><p>It is different from Archetypes approach. Sparse sets is a clever data structure for storing sparse sets of integers on the range 0 .. u−1 and performing initialization, lookup, and insertion is time O(1) and iteration in O(n), where n is the number of elements in the set.</p>
+<ul>
+<li>in short, the sparse set would provides two array. one is <strong>dense[]</strong>, another one is <strong>sparse[]</strong>.</li>
+</ul>
+<p><img src="/images/ecs/sparse0b.png" srcset="/img/loading.gif" lazyload alt="SparseSets"></p>
+<p>the indirection isn’t required when you want to iterate all the values contained by the sparse set. It’s suffice to walk through the <strong>dense</strong> for that, from the first to the last.</p>
+<p>how can we use the SpareSet to organize components? we can use the sparse set to create to pool and put components (look at the graph)</p>
+<p><img src="/images/ecs/components.png" srcset="/img/loading.gif" lazyload alt="organize components"></p>
+<h5 id="Problems-1"><a href="#Problems-1" class="headerlink" title="Problems"></a>Problems</h5><p>but there still are some problems, if we only iterate one component, that must be faster. but if we want to iterate entities which contain component <strong>position</strong> and <strong>velocity</strong>. How do we do?</p>
+<h3 id="View"><a href="#View" class="headerlink" title="View"></a>View</h3><p>The first implementation is <strong>view</strong>. which also provies <strong>single</strong> type views and <strong>multi-type</strong> views.</p>
+<h4 id="Single-Views"><a href="#Single-Views" class="headerlink" title="Single Views"></a>Single Views</h4><p>Single type views are specialized to give a performance boost in all cases. (that’s because each components are in contious memory block and cache-friendly)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">auto</span> singleView = registry.<span class="hljs-built_in">view</span>&lt;position&gt;();<br></code></pre></td></tr></table></figure>
+
+<p>There is nothing as fast as a single type view. They just walk through packed (actually paged) arrays of elements and return them directly.</p>
+<pre><code class=" mermaid">graph LR
+entity1 --&gt; entity2 --&gt; entity3 --&gt; entity4 --&gt;  entityN
+position --&gt; position2 --&gt; position3 --&gt; position4--&gt; position5
+</code></pre>
+
+<h4 id="Multi-Type-Views"><a href="#Multi-Type-Views" class="headerlink" title="Multi Type Views"></a>Multi Type Views</h4><p>Multi type views iterate entities that have at least all the given components. </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">auto</span> muiltView = registry.<span class="hljs-built_in">view</span>&lt;position,velocity&gt;();<br></code></pre></td></tr></table></figure>
+
+<pre><code class=" mermaid">graph
+
+subgraph entity
+entity1 --&gt; entity2 --&gt; entity3 --&gt; entity4 --&gt;  entityN
+end
+
+subgraph positon pool
+position --&gt; position2 --&gt; position3 --&gt; position4--&gt; position5
+end
+
+subgraph velocity pool
+velocity1 --&gt; velocity2 --&gt; velocity4
+end
+
+entity1 --&gt; velocity1
+entity2 --&gt; velocity2
+entity4 --&gt; velocity4
+
+</code></pre>
+<p>During construction, they look at the number of elements available in each pool and use the <strong>smallest set</strong> in order to speed up iterations.</p>
+<pre><code class=" mermaid">graph LR
+
+subgraph entity
+entity1 --&gt; entity2 --&gt; entity4
+end
+
+subgraph velocity pool
+velocity1 --&gt; velocity2 --&gt; velocity4
+end
+</code></pre>
+<p>The performance is good when you <strong>only</strong> fetch velocity component(because it was the smallest set). but the performance could cause slower when you try to access other components becuase it would use indirect look-up.</p>
+<pre><code class=" mermaid">graph LR
+EntityId --&gt; ArrayIndexId --&gt; OtherComponent
+
+</code></pre>
+
+<p>So is there any way to boost the performance when you want to iterate <strong>more components</strong>.</p>
+<h3 id="Group"><a href="#Group" class="headerlink" title="Group"></a>Group</h3><p>Consider you want to iterate components <strong>position</strong> and <strong>velocity</strong>. Because of the way sparse sets work, you know components are all tightly packed in two arrays. Both of them contain some entities that have both the components and some others that have only one of the components. If you can arrange things so that all the entities that have both the components are at the top of the arrays while all the others are at the end, as a result the components will also be arranged accordingly. Iterations will benefit indecently from how things are laid out in this case, because all the entities that have both the components and the components themselves are tightly packed and sort in the same way at the beginning of their arrays. </p>
+<p><img src="/images/ecs/group.png" srcset="/img/loading.gif" lazyload alt="group"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Game-Engine/">Game Engine</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/08/01/Learn-Nanite/">
+                        <span class="hidden-mobile">Fake-Nanite</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.3/dist/mermaid.min.js" ></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({"theme":"default"});
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
