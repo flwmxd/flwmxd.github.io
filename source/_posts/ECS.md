@@ -240,11 +240,57 @@ EntityId --> ArrayIndexId --> OtherComponent
 
 ```
 
-So is there any way to boost the performance when you want to iterate **more components**.
+So is there any way to boost the performance when you want to iterate **more components** ?
 
+The anwser is **Group**.
 
 ### Group
 
-Consider you want to iterate components **position** and **velocity**. Because of the way sparse sets work, you know components are all tightly packed in two arrays. Both of them contain some entities that have both the components and some others that have only one of the components. If you can arrange things so that all the entities that have both the components are at the top of the arrays while all the others are at the end, as a result the components will also be arranged accordingly. Iterations will benefit indecently from how things are laid out in this case, because all the entities that have both the components and the components themselves are tightly packed and sort in the same way at the beginning of their arrays. 
+Consider you want to iterate components **position** and **velocity**. Because of the way sparse sets work, you know components are all tightly packed in two arrays. Both of them contain some entities that have both the components and some others that have only one of the components. If you can arrange things so that all the entities that have both the components are at the top of the arrays while all the others are at the end, as a result the components will also be arranged accordingly(see the picture). Iterations will benefit indecently from how things are laid out in this case, because all the entities that have both the components and the components themselves are tightly packed and sort in the same way at the beginning of their arrays. 
 
-![group](/images/ecs/group.png)
+#### Example
+Let's take an example.
+
+Imagine you have two sparse sets, one for the component **A** and one for the component **B**. They already contain some entities, none of which have both the components. A group for (A, B) is **empty** at this point:
+![group_case1](/images/ecs/group_case1.png)
+
+Let’s add **B** to **entity e7** and see how it works. When you do that, you’re guaranteed that **e7** isn’t part of the group yet, mainly because it didn’t have B before.
+Immediately after adding B to entity e7, the sparse sets will appear as follows:
+![group_case2](/images/ecs/group_case2.png)
+
+All what is needed now is to literally move the entity e7 within the group(by swaping).
+![group_case3](/images/ecs/group_case3.png)
+
+What if we add A to the entity e4 then? That’s easy, same operations and the group keeps growing up:
+![group_case4](/images/ecs/group_case4.png)
+
+However, there is a price to pay for this, as for everything else. In this case, the creation and destruction of components is affected by a group to an extent. Nothing that you’ll really notice in real world applications probably, mainly because construction and destruction aren’t usually done along critical paths and it’s unlikely you’re to construct or destroy 1M entities or components every tick. 
+
+but if we see the memory structure/model, there still have some approaches to optimize. the approach we call it **ownership**.
+
+#### Full-owning groups
+
+Full-owning groups are such that they literally own all the pools of their types of components. 
+This is the fastest group (as in fast to iterate entities and components) you can construct. Cache misses are intuitively reduced to a minimum.
+
+But in most time, we can not have the ideal model. 
+
+#### Partial-owning groups
+
+What if I want to define two groups, one for components **A** and **B**, the other one for components **B** and **C**?
+![group_boost](/images/ecs/group_boost.png)
+
+Let our first group take ownership of components A and B and therefore be a full-owning group. The second group will take then the ownership of C and will use B as a **free-type**, that is a type of component that takes part in the definition of the group but in whose packed array we cannot create a subset.
+
+Iterations will benefit quite a lot from this. First of all, the extent of the group tells us the exact number of entities to return. Even more, we know exactly what these entities are, because the sparse set of C has them at the top of its array, ordered the same of their components. This is already a huge boost in terms of performance. To get B, instead, we will have to pay the price of the **indirection**, fortunately very low due to the properties of the sparse sets. However, we don’t have to test anymore entities to know if they have B because we know that they have it, being them in the group. We can then go directly to the component and return it.
+
+#### Non-owning groups
+
+Image another case we have three groups: one for components A and B, one for components B and C and one for components A and C.
+
+![group-non-owning](/images/ecs/group-non-owning.png)
+
+the first one is a full-owning group. The second one is a partial-owning group. Right. What about the third one instead?
+the third on is **Non-owning**. From the pic, we can see that the there is not element swap, the group only contains the two pools pointer(one is A  pool, another is C pool).
+Thus, we have to pay extra time indirect component. but the price is not too high.
+
