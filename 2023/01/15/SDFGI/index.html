@@ -14,7 +14,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="Prime`s Portfolio">
+  <meta name="description" content="Hybrid GI solution, partly inspired by Lumen and DDGI. The main core idea is to provide a complete GI solution (including Indirect-Light, Infinite-Bounce, Emissive-Lighting, Glossy-Reflection, Shadow, AO) that can run on both Raytracing-supported and non-raytracing hardware">
   <meta name="author" content="Prime">
   <meta name="keywords" content="Graphics Game Engine OpenGL C++ Vulkan">
   
@@ -56,7 +56,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"flwmxd.github.io","root":"/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+    var CONFIG = {"hostname":"flwmxd.github.io","root":"/","version":"1.8.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -158,7 +158,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/back.jpg') no-repeat center center;
+         style="background: url('/img/back2.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -190,11 +190,19 @@
       
       
       49
-       分钟
+       minutes
     </span>
   
 
   
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 
+      </span>
+    
   
 </div>
 
@@ -240,7 +248,7 @@
 <p><img src="/images/sdfgi/DDGI_Raytrace_Radiance.png" srcset="/img/loading.gif" lazyload alt="Border"></p>
 <p>The vertical axis is the ProbeId and the horizontal axis is the Radiance obtained for each ray.</p>
 <p>Step2. Once the Radiance and Depth are obtained, the probe can be updated, i.e., the Radiance map is used to update the Irradiance of the Probe (while updating the distance information).</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int32_t</span> i = <span class="hljs-number">0</span>;i&lt;<span class="hljs-number">2</span>;i++)<br>&#123;<br>    internal.depth[i]-&gt;<span class="hljs-built_in">setName</span>(<span class="hljs-string">&quot;DDGI Depth Probe Grid &quot;</span> + std::<span class="hljs-built_in">to_string</span>(i));<br>    internal.depth[i]-&gt;<span class="hljs-built_in">buildTexture</span>(TextureFormat::RG16F, depthWidth, depthHeight);    <span class="hljs-comment">//Depth and Depth^2</span><br><br>    internal.irradiance[i]-&gt;<span class="hljs-built_in">setName</span>(<span class="hljs-string">&quot;DDGI Irradiance Probe Grid &quot;</span> + std::<span class="hljs-built_in">to_string</span>(i));<br>    internal.irradiance[i]-&gt;<span class="hljs-built_in">buildTexture</span>(TextureFormat::RGBA16, irradianceWidth, irradianceHeight);<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span>(<span class="hljs-type">int32_t</span> i = <span class="hljs-number">0</span>;i&lt;<span class="hljs-number">2</span>;i++)<br>&#123;<br>    internal.depth[i]-&gt;<span class="hljs-built_in">setName</span>(<span class="hljs-string">&quot;DDGI Depth Probe Grid &quot;</span> + std::<span class="hljs-built_in">to_string</span>(i));<br>    internal.depth[i]-&gt;<span class="hljs-built_in">buildTexture</span>(TextureFormat::RG16F, depthWidth, depthHeight);    <span class="hljs-comment">//Depth and Depth^2</span><br><br>    internal.irradiance[i]-&gt;<span class="hljs-built_in">setName</span>(<span class="hljs-string">&quot;DDGI Irradiance Probe Grid &quot;</span> + std::<span class="hljs-built_in">to_string</span>(i));<br>    internal.irradiance[i]-&gt;<span class="hljs-built_in">buildTexture</span>(TextureFormat::RGBA16, irradianceWidth, irradianceHeight);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>Step3. Border update</p>
 <p>Because DDGI uses bilinear interpolation, special operations are required for the borders.</p>
@@ -269,7 +277,7 @@
 </ul>
 <p>After having the above MeshDistanceField, GlobalDistanceField is created and its corresponding Mimmap is generated, since the current algorithm does not use the Lumen-like Detail-Trace (it may be implemented in a future version, but GlobalSDF can work better with DDGI-Cascade). Global is created to accelerate the SDF-Trace. </p>
 <p><img src="/images/sdfgi/global-sdf.png" srcset="/img/loading.gif" lazyload alt="GSDF"></p>
-<h3 id="The-generation-algorithm-of-GlobalDistanceField"><a href="#The-generation-algorithm-of-GlobalDistanceField" class="headerlink" title="The generation algorithm of GlobalDistanceField"></a>The generation algorithm of GlobalDistanceField</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><br><span class="hljs-keyword">float</span> minDistance = DistanceMax;<br><br>minDistance *= <span class="hljs-built_in">imageLoad</span>(uGlobalSDF,voxelCoord).r;<br><br><span class="hljs-keyword">for</span> (uint i = <span class="hljs-number">0</span>; i &lt; pushConsts.objectsCount; i++)<br>&#123;<br>    uint objId = pushConsts.objects[i];<br>    MeshDistanceField meshDF = data[objId];<br>    minDistance = <span class="hljs-built_in">min</span>(minDistance, <span class="hljs-built_in">distanceToMeshSDF</span>(minDistance, meshDF, uMeshSDF[objId], voxelWorldPos));<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="The-generation-algorithm-of-GlobalDistanceField"><a href="#The-generation-algorithm-of-GlobalDistanceField" class="headerlink" title="The generation algorithm of GlobalDistanceField"></a>The generation algorithm of GlobalDistanceField</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><br><span class="hljs-type">float</span> minDistance = DistanceMax;<br><br>minDistance *= <span class="hljs-built_in">imageLoad</span>(uGlobalSDF,voxelCoord).r;<br><br><span class="hljs-keyword">for</span> (uint i = <span class="hljs-number">0</span>; i &lt; pushConsts.objectsCount; i++)<br>&#123;<br>    uint objId = pushConsts.objects[i];<br>    MeshDistanceField meshDF = data[objId];<br>    minDistance = <span class="hljs-built_in">min</span>(minDistance, <span class="hljs-built_in">distanceToMeshSDF</span>(minDistance, meshDF, uMeshSDF[objId], voxelWorldPos));<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>In the game, we need to satisfy the real time, so we need to update the GlobalSDF when some elements in the scene are changed. Therefore, for dividing the space, i.e., updating the grid where dynamic objects are moved, in current algorithm we use the Uniform Grid (Chunk).</p>
 <p><img src="/images/sdfgi/space-chunk.png" srcset="/img/loading.gif" lazyload alt="GSDF"></p>
@@ -317,7 +325,7 @@
 <p>In SVGF we use an <a target="_blank" rel="noopener" href="https://jo.dreggn.org/home/2010_atrous.pdf">Atrous</a> for the filtering operation.</p>
 <h4 id="Spatial-Filtering"><a href="#Spatial-Filtering" class="headerlink" title="Spatial Filtering"></a>Spatial Filtering</h4><p>In the spatial filtering part, SVGF uses the À-Trous wavelet filter, and also uses the progressive increase of Filter size to reduce the computational resource overhead, as shown in Fig.</p>
 <p><img src="/images/sdfgi/SVGF-Spatial.jpg" srcset="/img/loading.gif" lazyload alt="SVGF-Depth"></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> yy = -RADIUS; yy &lt;= RADIUS; yy++)<br>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> xx = -RADIUS; xx &lt;= RADIUS; xx++)<br>    &#123;<br>        <span class="hljs-keyword">const</span> ivec2 coord = coord + <span class="hljs-built_in">ivec2</span>(xx, yy) * STEP_SIZE; <br>        <span class="hljs-comment">// Edge stop....</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> yy = -RADIUS; yy &lt;= RADIUS; yy++)<br>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> xx = -RADIUS; xx &lt;= RADIUS; xx++)<br>    &#123;<br>        <span class="hljs-type">const</span> ivec2 coord = coord + <span class="hljs-built_in">ivec2</span>(xx, yy) * STEP_SIZE; <br>        <span class="hljs-comment">// Edge stop....</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h5 id="Depth-factor"><a href="#Depth-factor" class="headerlink" title="Depth factor"></a>Depth factor</h5><p><img src="/images/sdfgi/SVGF-Depth.png" srcset="/img/loading.gif" lazyload alt="SVGF-Depth"></p>
 <p>In Atrous, we first consider the depth factor, as in Figure A/B, because AB is on the same face, so in the process of filtering, AB should contribute to each other, but there is a difference in the depth of AB, so for the processing of depth, we will be more biased to use the gradient of depth for the operation.</p>
@@ -489,6 +497,8 @@
   <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
 
 
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
