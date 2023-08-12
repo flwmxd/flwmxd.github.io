@@ -3,6 +3,7 @@ title: Fake-Nanite
 date: 2023-08-01 23:00:00
 tags: Geometric Processing
 index_img : /images/nanite/virtual_geometry.png
+description: Virtual Geometry build-in MapleEngine. Fake Nanite implementation.
 sticky: 100
 ---
 

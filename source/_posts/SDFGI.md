@@ -4,7 +4,8 @@ date: 2023-01-15 00:00:00
 tags: Graphics
 sticky: 100
 index_img : /images/sdfgi/overview.png
-
+description: Hybrid GI solution, partly inspired by Lumen and DDGI. The main core idea is to provide a complete GI solution (including Indirect-Light, Infinite-Bounce, Emissive-Lighting, Glossy-Reflection, Shadow, AO) that can run on both Raytracing-supported and non-raytracing hardware
+comments: true
 ---
 
 # Introduction

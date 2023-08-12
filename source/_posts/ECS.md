@@ -5,6 +5,7 @@ tags: Game Engine
 sticky: 100
 description: An advanced ECS Architecture build-in MapleEngine
 index_img: /images/ecs/ArchetypeDiagram.png
+comments: true
 ---
 # Introduction 
 

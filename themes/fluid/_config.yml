@@ -392,7 +392,7 @@ footer:
     # 页面显示的文本，{}是数字的占位符（必须包含)，下同
     # Displayed text, {} is a placeholder for numbers (must be included), the same below
     pv_format: "总访问量 {} 次"
-    uv_format: "总访客数 {} 人"
+    uv_format: "History Visitors {}"
 
   # 国内大陆服务器的备案信息
   # For Chinese mainland website policy, other areas keep disable
@@ -415,7 +415,7 @@ footer:
 index:
   # 首页 Banner 头图，可以是相对路径或绝对路径，以下相同
   # Path of Banner image, can be a relative path or an absolute path, the same on other pages
-  banner_img: /img/back.jpg
+  banner_img: /img/back2.jpg
 
   # 头图高度，屏幕百分比
   # Height ratio of banner image
@@ -487,7 +487,7 @@ index:
 # Post Page
 #---------------------------
 post:
-  banner_img: /img/back.jpg
+  banner_img: /img/back2.jpg
   banner_img_height: 70
   banner_mask_alpha: 0.3
 
@@ -524,7 +524,7 @@ post:
     # Estimate the time required to read the full text
     min2read:
       enable: true
-      format: "{} 分钟"
+      format: "{} minutes"
       # 每分钟阅读多少字，如果是技术文章，建议降低
       # Words read per minute
       words: 100
@@ -532,12 +532,12 @@ post:
     # 浏览量计数
     # Number of visits
     views:
-      enable: false
+      enable: true
       # 统计数据来源
       # Data Source
       # Options: busuanzi | leancloud
       source: "busuanzi"
-      format: "{} 次"
+      format: "{} "
 
   # 在文章开头显示文章更新时间，该时间默认是 md 文件更新时间，可通过 front-matter 中 `updated` 手动指定（和 date 一样格式）
   # Update date is displayed at the beginning of the post. The default date is the update date of the md file, which can be manually specified by `updated` in front-matter (same format as date)
@@ -561,7 +561,7 @@ post:
     headingSelector: "h1,h2,h3,h4,h5,h6"
     # 层级的折叠深度，0 是全部折叠，大于 0 后如果存在下级标题则默认展开
     # Collapse depth. If 0, all headings collapsed. If greater than 0, it will be expanded by default if there are sub headings
-    collapseDepth: 0
+    collapseDepth: 6
 
   # 版权声明，会显示在每篇文章的结尾
   # Copyright, will be displayed at the end of each post
@@ -628,7 +628,7 @@ post:
     # 指定的插件，需要同时设置对应插件的必要参数
     # The specified plugin needs to set the necessary parameters at the same time
     # Options: utterances | disqus | gitalk | valine | waline | changyan | livere | remark42 | twikoo
-    type: disqus
+    type: valine
 
 
 #---------------------------
@@ -761,7 +761,7 @@ twikoo:
 # Archive Page
 #---------------------------
 archive:
-  banner_img: /img/back.jpg
+  banner_img: /img/back2.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
@@ -773,7 +773,7 @@ archive:
 #---------------------------
 category:
   enable: true
-  banner_img: /img/back.jpg
+  banner_img: /img/back2.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
@@ -803,7 +803,7 @@ category:
 #---------------------------
 tag:
   enable: true
-  banner_img: /img/back.jpg
+  banner_img: /img/back2.jpg
   banner_img_height: 80
   banner_mask_alpha: 0.3
   subtitle:
@@ -821,7 +821,7 @@ tag:
 #---------------------------
 about:
   enable: true
-  banner_img: /img/back.jpg
+  banner_img: /img/back2.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
@@ -842,7 +842,7 @@ about:
 # Custom Page through `hexo new page`
 #---------------------------
 page:
-  banner_img: /img/back.jpg
+  banner_img: /img/back2.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -865,7 +865,7 @@ page404:
 #---------------------------
 links:
   enable: true
-  banner_img: /img/back.jpg
+  banner_img: /img/back2.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   subtitle:
