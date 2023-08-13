@@ -65,7 +65,7 @@ now the cache line is mapped into L1/L2, the CPU can access matrix[N][0], matrix
 
 but if we iterate matrix by column, in most cases the elements matrix[0][M] , matrix[1][M], and matrix[2][M] are not contiguous, which would cause a very high-frequency cache miss. Thus, the overall efficiency would be slower.
 
-## ECS Architecture at First impression
+# ECS Architecture at First impression
 
 The most obvious implementation of a component based model is the one that involves maps (or sort of) and objects taken directly from the typical OOP world
 
@@ -81,7 +81,7 @@ void system(std::vector<GameObjects> &objects) {
 }
 ```
 
-### Memory Model
+## Memory Model
 
 In this example, so the memory looks like this. 
 
@@ -97,13 +97,13 @@ stateDiagram-v2
 
 ``` 
 
-### Problems ?
+## Problems ?
 - components are scattered around in memory and you’ve multiple jumps each and every time you access them.
    - you don’t know at any time what are the game objects that match a given query and thus you must iterate all of them in each system
    - thus, there is a big performance issue.
 
 
-## ECS Architecture at Second impression
+# ECS Architecture at Second impression
 
 From the last example, we can see that **the GameObject** were nothing more than **containers** for components
 - Components were stored in maps by game objects and every game object had its own set of components. 
@@ -120,7 +120,7 @@ component --> component2 --> component3 --> component4 --> componentN
 
 but there is a problem, not all entities have same components. thus there are some solutions to solve it.
 
-### Code Appearance
+## Code Appearance
 
 ECS Architecture is totally different with OOP. so for each object, we can call it as **entity**, in this case it is only an integer for representing current object id and managed by central registry .
 in order to accelerating accessing components data, each components would be storaged in a pools( continous memory block );
@@ -144,7 +144,7 @@ class StoragePool
 ```
 
 
-### Archetypes
+## Archetypes
 
 The idea behind this approach can be summarized as follows: if an entity has a particular set of components, take the pool (also known as archetype) for the entities that have that same set (if it doesn’t already exist, create it) and assign the entity and all its components to that pool. Whenever you add/remove a component to/from an entity, pick up everything again and move the entity and all its components from a pool to the other, from an archetype to the other.
 
@@ -157,7 +157,7 @@ The idea behind this approach can be summarized as follows: if an entity has a p
    - Every time a component is added or removed, an entity and all its components are moved from an archetype to another one. This affects to an extent the construction and destruction of components
    - Main issue is the archetypes's fragmentation. which means if you have a high number of possible combinations of components assigned to different entities at runtime and this will definitely affect the iterations to an extent by adding more and more jumps to find all the entities.
 
-### Sparse Sets
+## Sparse Sets
 
 It is different from Archetypes approach. Sparse sets is a clever data structure for storing sparse sets of integers on the range 0 .. u−1 and performing initialization, lookup, and insertion is time O(1) and iteration in O(n), where n is the number of elements in the set.
    - in short, the sparse set would provides two array. one is **dense[]**, another one is **sparse[]**.
@@ -170,15 +170,15 @@ how can we use the SpareSet to organize components? we can use the sparse set to
 
 ![organize components](/images/ecs/components.png)
 
-##### Problems
+#### Problems
 
 but there still are some problems, if we only iterate one component, that must be faster. but if we want to iterate entities which contain component **position** and **velocity**. How do we do?
 
-### View
+## View
 
 The first implementation is **view**. which also provies **single** type views and **multi-type** views.
 
-#### Single Views
+### Single Views
 Single type views are specialized to give a performance boost in all cases. (that's because each components are in contious memory block and cache-friendly)
 
 ```c++
@@ -192,7 +192,7 @@ entity1 --> entity2 --> entity3 --> entity4 -->  entityN
 position --> position2 --> position3 --> position4--> position5
 ``` 
 
-#### Multi Type Views
+### Multi Type Views
 
 Multi type views iterate entities that have at least all the given components. 
 
@@ -245,11 +245,11 @@ So is there any way to boost the performance when you want to iterate **more com
 
 The anwser is **Group**.
 
-### Group
+## Group
 
 Consider you want to iterate components **position** and **velocity**. Because of the way sparse sets work, you know components are all tightly packed in two arrays. Both of them contain some entities that have both the components and some others that have only one of the components. If you can arrange things so that all the entities that have both the components are at the top of the arrays while all the others are at the end, as a result the components will also be arranged accordingly(see the picture). Iterations will benefit indecently from how things are laid out in this case, because all the entities that have both the components and the components themselves are tightly packed and sort in the same way at the beginning of their arrays. 
 
-#### Example
+### Example
 Let's take an example.
 
 Imagine you have two sparse sets, one for the component **A** and one for the component **B**. They already contain some entities, none of which have both the components. A group for (A, B) is **empty** at this point:
@@ -269,14 +269,14 @@ However, there is a price to pay for this, as for everything else. In this case,
 
 but if we see the memory structure/model, there still have some approaches to optimize. the approach we call it **ownership**.
 
-#### Full-owning groups
+### Full-owning groups
 
 Full-owning groups are such that they literally own all the pools of their types of components. 
 This is the fastest group (as in fast to iterate entities and components) you can construct. Cache misses are intuitively reduced to a minimum.
 
 But in most time, we can not have the ideal model. 
 
-#### Partial-owning groups
+### Partial-owning groups
 
 What if I want to define two groups, one for components **A** and **B**, the other one for components **B** and **C**?
 ![group_boost](/images/ecs/group_boost.png)
@@ -285,9 +285,9 @@ Let our first group take ownership of components A and B and therefore be a full
 
 Iterations will benefit quite a lot from this. First of all, the extent of the group tells us the exact number of entities to return. Even more, we know exactly what these entities are, because the sparse set of C has them at the top of its array, ordered the same of their components. This is already a huge boost in terms of performance. To get B, instead, we will have to pay the price of the **indirection**, fortunately very low due to the properties of the sparse sets. However, we don’t have to test anymore entities to know if they have B because we know that they have it, being them in the group. We can then go directly to the component and return it.
 
-#### Non-owning groups
+### Non-owning groups
 
-Image another case we have three groups: one for components A and B, one for components B and C and one for components A and C.
+Imagine another case we have three groups: one for components A and B, one for components B and C and one for components A and C.
 
 ![group-non-owning](/images/ecs/group-non-owning.png)
 
@@ -295,3 +295,221 @@ the first one is a full-owning group. The second one is a partial-owning group. 
 the third on is **Non-owning**. From the pic, we can see that the there is not element swap, the group only contains the two pools pointer(one is A  pool, another is C pool).
 Thus, we have to pay extra time indirect component. but the price is not too high.
 
+# ECS Architecture at Third impression
+
+From the above article, we have the low level ECS architecture which mainly sloved memory problem and memory optmizations. Let's see the **basic API** for them.
+
+```c++
+
+class SparseSet;// for memory management 
+
+class Registry// central registry
+{
+   uint32_t create();
+
+   template<typename Comp, typename... Args>
+   decltype(auto) emplace_ctx(Args &&...args);//Global Component
+
+   template<typename Comp>
+   auto& get_ctx();//Global Component
+
+   template<typename Comp, typename... Args>
+   decltype(auto) emplace(const uint32_t entity, Args &&...args);
+
+   template<typename... Owned, typename... Get, typename... Exclude>
+   Group<TypeList<Owned...>, TypeList<Get...>, TypeList<Exclude...>> group(TypeList<Get...>, TypeList<Exclude...> = {});
+
+   template<typename... Owned,typename... Exclude>
+   Group<TypeList<Owned...>, TypeList<>, TypeList<Exclude...>> group(TypeList<Exclude...> = {});
+
+   template<typename Component, typename... Other, typename... Exclude>
+   View<TypeList<Component>, TypeList<Other>, TypeList<Exclude...>> view(TypeList<Exclude...> = {});
+};
+
+class View;
+
+class Group;
+
+```
+## OOP API Design
+
+with the above API, we can desgin the interface like this.
+
+```c++
+
+class ISystem
+{
+   virtual void update(Registry & registry) = 0;
+}
+
+// assuming we want to update animation.
+class AnimationSystem : public ISystem
+{
+   virtual void update(Registry & registry) override
+   {
+      auto view = registry.view<Animation,Transform>();
+      for(auto [a,b] : view)  {  /*handle logic.*/ }
+   }
+}
+// assuming we want to render some objects into screen.
+class RenderSystem : public ISystem
+{
+   virtual void update(Registry & registry) override
+   {
+      auto group = registry.group<MeshRenderer,Transform>();
+      for(auto [b,c] : group) { }
+   }
+}
+
+```
+### Problems?
+
+- look at the interface, what is problem of them?
+   - First, before the engine executes the **update**, the engine did not which components would be operated within the system.
+      - it means that we can not analyze **the dependency**. 
+   - In practice, especially in game, most system would handle lots of entites/objects in each update/tick. thus, there are lots of redundant API operations.
+      - like **registry.group<Comp...>** or **registry.view<Comp...>**
+   - Third, because there is no dependency information, we can not execute systems **parallelly**. 
+      - since the engine want to use ECS architecture, can we get rid of **OOP** or **virtual function**?
+   - Forth, if two systems want to share data with each other, how can they do ? holding the reference with each other? that's too bad, not a good desgin and it could case very serious memory problem.
+
+# ECS Architecture at Final impression
+
+From last part, the code from the architecture might be this.
+
+```c++
+class SystemBuilder
+{
+  void update(){
+      for(auto & system : systems){
+          system.update(registry);
+      }
+  }
+  std::vector<ISystem> systems;
+};
+```
+Yes, it works in most cases and it is intuitive, right? but it is not good architecture, even worse.
+
+because we have to pay an extra price to execute **virtual functions** ( maybe is not high, but some people would care...). the next path is get rid of it.
+
+the code will evolute to 
+```c++
+class SystemBuilder
+{
+  using SystemCall = void (*)(ecs::Registry &);
+
+  void update(){
+      for(auto & system : systems)
+      {
+          system(registry);
+      }
+  }
+  std::vector<SystemCall> systems;
+};
+
+//define your system function
+void system(ecs::Registry & ) {
+   auto group = registry.group<B,C>();
+   for(auto [b,c] : group) { }
+}
+```
+through this way, we have got rid of the virtual function, right? but some people would care there is not context to save state, or save variables.
+we can use context variable to fix. for example.
+
+```c++
+void systemA(ecs::Registry & registry) {
+   const auto & ctx = registry.get_ctx<Env>();
+}
+
+void systemB(ecs::Registry & registry) {
+   auto & ctx = registry.get_ctx<Env>();
+   ctx.data = do your logic...;
+}
+```
+but, there still have some problems we did not slove. **Dependency** and **Redundant API**.
+
+## IoC and Dependency Injection
+
+IoC (Inversion of Control) is a design pattern, not a specific technical implemetation. The idea of IoC is to hand over the control of objects that were originally manually created in the program to the framework for management. the **Dependency Injection** is the specific implemetation. 
+
+assuming we have a MovementSystem which is handling player's movement. within the system, we may try to access **DeltaTime**, **Input** which are **global** variable, and try to read and write Player movement data.
+
+```c++
+namespace movement{
+   void system(ecs::Registry & registry) {
+      const auto & input = registry.get_ctx<Input>();
+      const auto & deltaTime = registry.get_ctx<DeltaTime>();
+      for(auto [player,transform] : registry.view<Player,Transform>())
+      {
+         //....
+      }
+   }
+}
+```
+### Inject Global Variable
+
+we can notice that, the **Input, DeltaTime** was controlled by user. means user try to get specific component by **registry.get_ctx\<Comp\>**. but if we hand over the control of **Input, DeltaTime** to framework, what does it look like?
+
+```c++
+   void system(ecs::Registry & registry, const Input & input, const DeltaTime& dt);
+```
+through the descriptor of the function, the component Input and DeltaTime was injected into system by framework. 
+
+### Inject Entity
+
+Continue analyzing the system, in each system we will use **registry.view** or **registry.group** to get list of entities. can we abstract it again through dependency injection?
+
+it means each system would only care about single entity, and the low level framework handle iteration. Sounds great, right? thus the system would evolute to this.
+
+```c++
+   void system(Entity playerEntity, const Input & input, const DeltaTime& dt)
+   {
+      auto [player,transform] = playerEntity;
+   }
+```
+but here is another problem, why would the framework know that player entity contains these component(Transform/Player/etc...)? so we need type definition to define player.
+
+```c++
+   using Entity = ecs::Define
+                     ::Fetech<Player>
+                     ::Modify<Transform>
+                     ::To<ecs::EntityTemplate>;
+   void system(Entity playerEntity, const Input & input, const DeltaTime& dt)
+   {
+      auto [player,transform] = playerEntity;
+   }
+```
+looks amazing! we use type definition to define player entity and make dependency injection. so in each system, we can not see any other framework/registry. 
+
+This is a big step ! 
+- Firstly, we get rid of virutal function.
+- Secondly, we implemented dependency injection. every entity and global variables can be injected by framework. it hints very important idea that is **framework knows the dependency**.
+
+## Dependency Graph
+
+From the last part, we have a result that is **framework knows the dependency**. this is because we can use one rule to define each system. 
+
+- **void system(Entity, Group others, Global& a, const Global& b, .......);**
+
+the system has variadic arguements. look at the system ,there is another implicit rule, the variable is **readable** if one the variable used **const** modifier, otherwise it is writeable.
+
+from this rule, we can finally analyze the **Dependency Graph** and the execute them parallelly.
+
+![Dependency Graph](/images/ecs/dependency_graph.png)
+
+## Parallel Execution
+
+if we want to execute systems parallelly, the need to know what operation(read/write) did in each system. From last part we used dependency injection to inject variables, and each variable has a modifier to define readable or writeable. so the framework knows the dependency and systems can be dispatched into different threads.
+
+Let's take a simple example to see how it works.
+
+Assume we have **systemA** and **systemB**, both of them want to read component **A**. so we can dispatch them into different threads, right? because there is no data racing.
+
+![Parallel Execution](/images/ecs/job_system1.png)
+
+However, if one is read, another is write. they can be executed parallelly because for some systems we did care about the order. but it can also be executed in a single thread to ensure data safe as long as the user specifies the execution order. 
+
+based on this rule, each variable could take into consideration. so this is the basic idea for parallel execution.
+
+
+end......
