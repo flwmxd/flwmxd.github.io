@@ -107,7 +107,7 @@ stateDiagram-v2
 
 From the last example, we can see that **the GameObject** were nothing more than **containers** for components
 - Components were stored in maps by game objects and every game object had its own set of components. 
-   - Thus, It should be quite easy to get rid of these wrappers and change a bit the layout, so that components of a same type are stored together. it could look like this.
+   - Thus, It should be quite easy to get rid of these wrappers and change a bit the layout, so that components of a same type are stored together.(use cpu-cache and it can be accessed very quickly). It could look like this.
 
 
 and then we can try to get rid of object and rename it to entity, becuase it is pointless. 
@@ -119,30 +119,6 @@ component --> component2 --> component3 --> component4 --> componentN
 ``` 
 
 but there is a problem, not all entities have same components. thus there are some solutions to solve it.
-
-## Code Appearance
-
-ECS Architecture is totally different with OOP. so for each object, we can call it as **entity**, in this case it is only an integer for representing current object id and managed by central registry .
-in order to accelerating accessing components data, each components would be storaged in a pools( continous memory block );
-
-```c++
-class Registry{
-
-   entityId create(){....}
-
-   template<Comp>
-   Comp& emplace(Args&&...args){....}
-
-   SparseSet<entity> entites;
-};
-
-template<Comp>
-class StoragePool
-{
-   Comp[MAX_LENGHT] componts;
-}
-```
-
 
 ## Archetypes
 
@@ -509,7 +485,7 @@ Assume we have **systemA** and **systemB**, both of them want to read component 
 
 However, if one is read, another is write. they can be executed parallelly because for some systems we did care about the order. but it can also be executed in a single thread to ensure data safe as long as the user specifies the execution order. 
 
-based on this rule, each variable could take into consideration. so this is the basic idea for parallel execution.
+![Parallel Execution2](/images/ecs/job_system2.png)
 
 
-end......
+So based on this rule, each variables in system could take into consideration. so this is the basic idea for parallel execution.
