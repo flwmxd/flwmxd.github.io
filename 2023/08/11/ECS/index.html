@@ -189,7 +189,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      75
+      73
        minutes
     </span>
   
@@ -273,7 +273,7 @@
 <h1 id="ECS-Architecture-at-Second-impression"><a href="#ECS-Architecture-at-Second-impression" class="headerlink" title="ECS Architecture at Second impression"></a>ECS Architecture at Second impression</h1><p>From the last example, we can see that <strong>the GameObject</strong> were nothing more than <strong>containers</strong> for components</p>
 <ul>
 <li>Components were stored in maps by game objects and every game object had its own set of components. <ul>
-<li>Thus, It should be quite easy to get rid of these wrappers and change a bit the layout, so that components of a same type are stored together. it could look like this.</li>
+<li>Thus, It should be quite easy to get rid of these wrappers and change a bit the layout, so that components of a same type are stored together.(use cpu-cache and it can be accessed very quickly). It could look like this.</li>
 </ul>
 </li>
 </ul>
@@ -284,10 +284,6 @@ component --&gt; component2 --&gt; component3 --&gt; component4 --&gt; component
 </code></pre>
 
 <p>but there is a problem, not all entities have same components. thus there are some solutions to solve it.</p>
-<h2 id="Code-Appearance"><a href="#Code-Appearance" class="headerlink" title="Code Appearance"></a>Code Appearance</h2><p>ECS Architecture is totally different with OOP. so for each object, we can call it as <strong>entity</strong>, in this case it is only an integer for representing current object id and managed by central registry .<br>in order to accelerating accessing components data, each components would be storaged in a pools( continous memory block );</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Registry</span>&#123;<br><br>   <span class="hljs-function">entityId <span class="hljs-title">create</span><span class="hljs-params">()</span></span>&#123;....&#125;<br><br>   <span class="hljs-function"><span class="hljs-keyword">template</span>&lt;Comp&gt;</span><br><span class="hljs-function">   Comp&amp; <span class="hljs-title">emplace</span><span class="hljs-params">(Args&amp;&amp;...args)</span></span>&#123;....&#125;<br><br>   SparseSet&lt;entity&gt; entites;<br>&#125;;<br><br><span class="hljs-keyword">template</span>&lt;Comp&gt;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">StoragePool</span><br>&#123;<br>   Comp[MAX_LENGHT] componts;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
 <h2 id="Archetypes"><a href="#Archetypes" class="headerlink" title="Archetypes"></a>Archetypes</h2><p>The idea behind this approach can be summarized as follows: if an entity has a particular set of components, take the pool (also known as archetype) for the entities that have that same set (if it doesn’t already exist, create it) and assign the entity and all its components to that pool. Whenever you add/remove a component to/from an entity, pick up everything again and move the entity and all its components from a pool to the other, from an archetype to the other.</p>
 <p><img src="/images/ecs/ArchetypeDiagram.png" srcset="/img/loading.gif" lazyload alt="Archetypes"></p>
 <ul>
@@ -438,8 +434,8 @@ EntityId --&gt; ArrayIndexId --&gt; OtherComponent
 <p>Assume we have <strong>systemA</strong> and <strong>systemB</strong>, both of them want to read component <strong>A</strong>. so we can dispatch them into different threads, right? because there is no data racing.</p>
 <p><img src="/images/ecs/job_system1.png" srcset="/img/loading.gif" lazyload alt="Parallel Execution"></p>
 <p>However, if one is read, another is write. they can be executed parallelly because for some systems we did care about the order. but it can also be executed in a single thread to ensure data safe as long as the user specifies the execution order. </p>
-<p>based on this rule, each variable could take into consideration. so this is the basic idea for parallel execution.</p>
-<p>end……</p>
+<p><img src="/images/ecs/job_system2.png" srcset="/img/loading.gif" lazyload alt="Parallel Execution2"></p>
+<p>So based on this rule, each variables in system could take into consideration. so this is the basic idea for parallel execution.</p>
 
             </div>
             <hr>
